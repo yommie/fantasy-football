@@ -2,6 +2,8 @@ import { createSSRApp, h } from 'vue'
 import { renderToString } from '@vue/server-renderer'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 
+import './css/app.css'
+
 /**
  * Imports the given page component from the page record.
  */
