@@ -19,11 +19,6 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-    App\Controller\:
-        resource: '../src/Controller/'
-        arguments:
-            $inertia: '@rompetomp_inertia.inertia'
-        tags: [ 'controller.service_arguments' ]
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

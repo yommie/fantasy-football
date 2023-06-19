@@ -2,13 +2,17 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
         {% block stylesheets %}
             {{ vite_entry_link_tags('app') }}
         {% endblock %}
+
         {{ inertiaHead(page) }}
     </head>
-    <body>
+
+    <body class="bg-green-200">
         {{ inertia(page) }}
+
         {% block javascripts %}
             {{ vite_entry_script_tags('app') }}
         {% endblock %}
