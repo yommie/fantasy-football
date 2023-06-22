@@ -1,9 +1,9 @@
 FROM php:8.2 AS base
 
-RUN apt-get update && apt-get install -y git wget libpng-dev zlib1g-dev zip unzip php-zip
+RUN apt-get update && apt-get install -y git wget libpng-dev zlib1g-dev zip unzip
 
 RUN docker-php-ext-install gd
-RUN docker-php-ext-enable gd
+RUN docker-php-ext-install zip
 
 RUN wget https://get.symfony.com/cli/installer -O - | bash
 RUN ls -a
