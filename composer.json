@@ -73,6 +73,11 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
+        "build-database": [
+            "symfony console doctrine:schema:drop --ansi --force --full-database --no-interaction",
+            "symfony console doctrine:schema:update --ansi --force --no-interaction",
+            "symfony console doctrine:fixtures:load --ansi --no-interaction"
+        ],
         "post-install-cmd": [
             "@auto-scripts"
         ],
