@@ -1,6 +1,6 @@
 FROM php:8.2 AS base
 
-RUN apt-get update && apt-get install -y git wget zlib1g-dev
+RUN apt-get update && apt-get install -y git wget libpng-dev zlib1g-dev
 
 RUN docker-php-ext-install gd
 RUN docker-php-ext-enable gd
