@@ -64,6 +64,14 @@ readonly class BidService
             throw new BidException("Team has insufficient funds");
         }
 
+        $playerTeam = $bid->getPlayer()->getTeam();
+
+        $newTeamBudget = $bid->getTeam()->getBudget() - $bid->getAmount();
+        $newPlayerTeamBudget = $playerTeam->getBudget() + $bid->getAmount();
+
+        $bid->getTeam()->setBudget($newTeamBudget);
+        $playerTeam->setBudget($newPlayerTeamBudget);
+
         $bid->setStatus(BidStatusEnum::ACCEPTED->value);
         $bid->getPlayer()->setTeam($bid->getTeam());
 

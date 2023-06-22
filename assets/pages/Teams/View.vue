@@ -68,6 +68,12 @@ function rejectBid(bidId) {
 
     <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
       <div class="p-8 mb-5">
+        <div v-if="!isUserTeam" class="mb-5">
+          <h2 class="mb-5 font-bold text-xl">Owner</h2>
+
+          <p><span class="font-bold">Owner:</span> {{ team.owner.firstName }} {{ team.owner.lastName }} ({{ team.owner.email }})</p>
+        </div>
+
         <h2 class="mb-5 font-bold text-xl">Players</h2>
 
         <div v-for="player in team.players" class="flex items-center justify-between mb-2">

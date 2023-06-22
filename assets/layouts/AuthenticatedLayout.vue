@@ -39,7 +39,7 @@ function url() {
             <div v-if="$page.props.userTeam" class="flex items-center">
               <img class="w-8 h-8 mx-2" :src="$page.props.userTeam.logo">
               <span class="pr-6 py-4">
-                {{ $page.props.userTeam.name }}
+                {{ $page.props.userTeam.name }} ($ {{ $page.props.userTeam.budget }})
               </span>
             </div>
           </div>

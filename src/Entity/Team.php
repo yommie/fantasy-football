@@ -163,9 +163,11 @@ class Team
             "logo"      => ImageHandler::resolvePathToResizedImage('/images/' . $this->getLogo(), 60, 60),
             "owner"     => [
                 "id"        => $this->getOwner()->getId(),
+                "email"     => $this->getOwner()->getEmail(),
                 "lastName"  => $this->getOwner()->getLastName(),
                 "firstName" => $this->getOwner()->getFirstName()
             ],
+            "budget"    => number_format($this->getBudget(), 2),
             "players"   => array_map(function (Player $player) {
                 return $player->getJsonResponse();
             }, $this->getPlayers()->toArray()),
