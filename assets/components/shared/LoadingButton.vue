@@ -1,11 +1,15 @@
 <script setup>
 defineProps({
-  loading: Boolean
+  loading: Boolean,
+  customClass: {
+    type: String,
+    default: "flex items-center"
+  }
 })
 </script>
 
 <template>
-  <button :disabled="loading" class="flex items-center">
+  <button :disabled="loading" :class="customClass">
     <div v-if="loading" class="btn-spinner mr-2" />
     <slot />
   </button>

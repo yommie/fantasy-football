@@ -1,22 +1,26 @@
 <script setup>
 import { ref } from "vue"
-
-defineOptions({
-  inheritAttrs: false
-})
+import { v4 } from 'uuid'
 
 defineProps({
   id: {
-    type: String
+    type: String,
+    default: () => {
+      return v4()
+    }
   },
   type: {
     type: String,
     default: 'text',
   },
-  value: String,
   label: String,
   error: String,
+  modelValue: String,
+  placeholder: String,
+  wrapperClass: String
 })
+
+defineEmits(['update:modelValue'])
 
 const input = ref(null)
 
@@ -29,8 +33,14 @@ function select() {
 }
 </script>
 
+<script>
+export default {
+  inheritAttrs: false
+}
+</script>
+
 <template>
-  <div>
+  <div :class="wrapperClass">
     <label v-if="label" class="form-label" :for="id">{{ label }}:</label>
 
     <input
@@ -40,8 +50,9 @@ function select() {
         :id="id"
         :class="{ error: error }"
         :type="type"
-        :value="value"
-        @input="$emit('input', $event.target.value)"
+        :value="modelValue"
+        :placeholder="placeholder"
+        @input="$emit('update:modelValue', $event.target.value)"
     >
 
     <div v-if="error" class="form-error">{{ error }}</div>

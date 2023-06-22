@@ -14,8 +14,8 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email')
             ->add('password')
-            ->add('firstName')
             ->add('lastName')
+            ->add('firstName')
         ;
     }
 
@@ -23,6 +23,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'csrf_protection' => false,
         ]);
     }
 }

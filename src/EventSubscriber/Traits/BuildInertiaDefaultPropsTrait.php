@@ -14,7 +14,8 @@ trait BuildInertiaDefaultPropsTrait
         return [
             "auth"      => $this->buildAuthProps($user),
             "flash"     => $this->buildFlashProps($request),
-            "errors"    => new ArrayObject()
+            "errors"    => [],
+            "userTeam"  => $this->buildTeamProps($user)
         ];
     }
 
@@ -25,13 +26,20 @@ trait BuildInertiaDefaultPropsTrait
         ];
     }
 
+    private function buildTeamProps(?User $user): array|false
+    {
+        return ($user !== null && $user->getTeam() !== null) ?
+            $user->getTeam()->getJsonResponse() :
+            false;
+    }
+
     private function buildUserProps(User $user): array
     {
         return [
             'id'            => $user->getId(),
             'email'         => $user->getEmail(),
-            'last_name'     => $user->getLastName(),
-            'first_name'    => $user->getFirstName()
+            'lastName'      => $user->getLastName(),
+            'firstName'     => $user->getFirstName()
         ];
     }
 
@@ -39,7 +47,7 @@ trait BuildInertiaDefaultPropsTrait
     {
         $flashMessages = [
             "error"     => null,
-            "success"   => "This is a test"
+            "success"   => null
         ];
 
         if (!$request->hasSession()) {
@@ -49,8 +57,11 @@ trait BuildInertiaDefaultPropsTrait
         $session = $request->getSession();
 
         if ($session->getFlashBag()->has('success')) {
-            $flashMessages["error"]     = $this->getFlashErrorMessage($session);
             $flashMessages["success"]   = $this->getFlashSuccessMessage($session);
+        }
+
+        if ($session->getFlashBag()->has('error')) {
+            $flashMessages["error"]     = $this->getFlashErrorMessage($session);
         }
 
         return $flashMessages;

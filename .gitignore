@@ -34,6 +34,7 @@ database/*
 /public/bundles/
 /var/
 /vendor/
+/public/images/*
 ###< symfony/framework-bundle ###
 
 ###> pentatrion/vite-bundle ###

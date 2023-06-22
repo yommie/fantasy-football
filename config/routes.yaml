@@ -1,3 +1,15 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+logout:
+    path: /logout
+    options:
+        expose: true
+
+home_redirect:
+    path: "/"
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+    defaults:
+        route: 'app_teams'
+        permanent: true

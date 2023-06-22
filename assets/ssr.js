@@ -30,6 +30,7 @@ export function render(page) {
         },
         setup({ el, App, props, plugin }) {
             return createSSRApp({ render: () => h(App, props) })
+                .mixin({ methods: { route: window.route } })
                 .use(plugin)
         },
     })

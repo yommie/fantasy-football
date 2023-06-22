@@ -21,6 +21,9 @@
         "@inertiajs/server": "^0.1.0",
         "@vitejs/plugin-vue": "^3.0.1",
         "@vue/server-renderer": "^3.2.37",
-        "express": "^4.18.1"
+        "express": "^4.18.1",
+        "lodash": "^4.17.21",
+        "popper.js": "^1.16.1",
+        "uuid": "^9.0.0"
     }
 }

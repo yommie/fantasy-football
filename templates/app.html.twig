@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-200">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
         {% block stylesheets %}
             {{ vite_entry_link_tags('app') }}
         {% endblock %}
 
         {{ inertiaHead(page) }}
+
+        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+        <script>
+            window.route = function(name, params) {
+                if (typeof(params) === 'number') {
+                    params = { 'id': params }
+                }
+
+                return Routing.generate(name, params)
+            }
+        </script>
     </head>
 
-    <body class="bg-green-200">
+    <body class="leading-none text-gray-700 antialiased">
         {{ inertia(page) }}
 
         {% block javascripts %}
