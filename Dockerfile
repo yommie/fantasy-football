@@ -2,8 +2,8 @@ FROM php:8.2 AS base
 
 RUN apt-get update && apt-get install -y git wget
 
-RUN docker-php-ext-install ext-gd
-RUN docker-php-ext-enable ext-gd
+RUN docker-php-ext-install gd
+RUN docker-php-ext-enable gd
 
 RUN wget https://get.symfony.com/cli/installer -O - | bash
 RUN ls -a
